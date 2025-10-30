@@ -9,8 +9,6 @@ services:
     restart: always
     env_file:
       - .env.staging        
-    depends_on:
-      - codexy-mssql-staging  # ✅ dependencia correcta del entorno
     ports:
       - "5300:8080"          # ✅ puerto diferente para staging
     networks:
