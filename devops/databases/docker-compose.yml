@@ -63,8 +63,8 @@ services:
 
 networks:
   codexy-network:
-    name: codexy-network
-    driver: bridge
+    external: true
+
 
 volumes:
   mssql_data_develop:
