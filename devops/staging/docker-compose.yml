@@ -1,22 +1,22 @@
 version: '3.8'
 
 services:
-  codexy-api-qa:
-    container_name: codexy-api-qa
+  codexy-api-staging:
+    container_name: codexy-api-staging
     build:
       context: ../..
       dockerfile: Dockerfile
     restart: always
     env_file:
-      - .env.qa
+      - .env.staging        
     depends_on:
-      - codexy-mssql-qa
+      - codexy-mssql-staging  # ✅ dependencia correcta del entorno
     ports:
-      - "5200:8080"
+      - "5300:8080"          # ✅ puerto diferente para staging
     networks:
       - codexy-network
     labels:
-      - com.codexy.environment=qa
+      - com.codexy.environment=staging
 
 networks:
   codexy-network:
