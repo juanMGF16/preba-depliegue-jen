@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   codexy-mssql-develop:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -61,8 +63,8 @@ services:
 
 networks:
   codexy-network:
-    external: true
     name: codexy-network
+    driver: bridge
 
 volumes:
   mssql_data_develop:
