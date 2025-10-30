@@ -84,16 +84,13 @@ pipeline {
             }
         }
 
-        stage('Desplegar backend') {
-            steps {
-                dir(env.ENV_DIR) {
-                    sh """
-                        echo "🚀 Desplegando backend (${env.ENVIRONMENT})..."
-                        docker compose -f docker-compose.yml --env-file ${env.ENV_FILE} up -d --build
-                    """
-                }
-            }
+        dir(env.ENV_DIR) {
+            sh """
+                echo "🚀 Desplegando backend (${env.ENVIRONMENT})..."
+                docker compose -f docker-compose.yml --env-file .env.${env.ENVIRONMENT == 'develop' ? 'dev' : env.ENVIRONMENT} up -d --build
+            """
         }
+
     }
 
     post {
