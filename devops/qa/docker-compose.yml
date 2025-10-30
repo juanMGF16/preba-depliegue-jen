@@ -9,8 +9,6 @@ services:
     restart: always
     env_file:
       - .env.qa
-    depends_on:
-      - codexy-mssql-qa
     ports:
       - "5200:8080"
     networks:
